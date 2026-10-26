@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GapFinder AI
 
-## Getting Started
+**AI-Powered Personalized Learning Diagnosis Platform**
 
-First, run the development server:
+GapFinder AI helps students identify knowledge gaps, test understanding using questions grounded in their own study material, and generates personalized revision plans. Built for hackathons with a focus on RAG-powered, citation-backed learning diagnosis.
+
+## Features
+
+- 📚 **Material Upload**: Upload PDFs, TXT files, or paste notes/syllabus
+- 🗺️ **Topic Mapping**: AI extracts hierarchical topics from your materials
+- 🧠 **RAG Pipeline**: Questions and answers grounded in your uploaded content with citations
+- 📝 **Diagnostic Quiz**: AI-generated MCQs tailored to your materials
+- 📊 **Gap Analysis**: Topics classified as Weak/Medium/Strong with actionable insights
+- 📅 **Revision Plan**: Personalized, prioritized study schedule
+- 💬 **Explain a Topic**: Chat assistant that answers from your materials
+- 📈 **Progress Tracking**: Monitor improvement over time
+- 🔒 **Secure & Private**: User-isolated data with row-level security
+- 🎯 **Demo Mode**: Works without API keys for instant testing
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router) + TypeScript
+- **Styling**: Tailwind CSS
+- **AI**: Google Gemini API
+- **Database**: PostgreSQL with pgvector (via Supabase)
+- **Auth**: Supabase Auth
+- **Validation**: Zod
+- **File Processing**: pdf-parse
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- (Optional) Gemini API key, Supabase project for full functionality
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone <your-repo-url>
+cd hacathon
+
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env.local
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Demo Mode
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The app runs in **Demo Mode** by default if no API keys are configured. This provides:
+- Sample Biology syllabus and study materials
+- Pre-loaded topics and diagnostic data
+- Working quiz, gap report, and revision plan
+- All UI features functional without external services
 
-## Learn More
+**Demo Account** (when auth is configured): `demo@gapfinder.ai` / `demo123456`
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See `.env.example` for all configuration options. The app gracefully falls back to demo mode if credentials are missing.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+├── src/
+│   ├── app/              # Next.js App Router pages & API routes
+│   ├── components/       # React components (UI, layout, charts)
+│   ├── lib/              # Utilities, AI, RAG, DB logic
+│   └── ...
+├── data/                 # Sample materials
+├── migrations/           # Database schema
+├── docs/                 # Documentation
+└── public/samples/       # Sample files for demo
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Build for Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm start
+```
+
+## Documentation
+
+- [Architecture Overview](./docs/ARCHITECTURE.md)
+- [RAG Pipeline](./docs/RAG_PIPELINE.md)
+- [AI Workflow](./docs/AI_WORKFLOW.md)
+- [Database Schema](./migrations/schema.sql)
+- [Deployment Guide](./docs/DEPLOYMENT.md)
+- [Demo Instructions](./docs/DEMO.md)
+
+## License
+
+MIT
